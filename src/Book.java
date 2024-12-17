@@ -1,5 +1,4 @@
 public class Book extends LibraryItem{
-
     String Author;
     int PageCount;
 
@@ -9,11 +8,16 @@ public class Book extends LibraryItem{
         this.PageCount = PageCount;
     }
 
-    @Override
-    public void DisplayItemDetails() {
 
+    public boolean IsCheckedOut() {
+        System.out.println("Book: IsCheckedOut()");
+        super.IsCheckedOut();
+        return true;
     }
-    //String Author
-    //int pageCount
+
+
+    void displayItemDetails() {
+        System.out.println("Book: [" + ItemID + "] | " + Title + ", " + Author + " (" + PageCount + ")");
+    }
 
 }

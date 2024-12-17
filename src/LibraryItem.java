@@ -1,36 +1,47 @@
 abstract public class LibraryItem implements ILibraryItem{
+    String Title;
+    String ItemID;
+    boolean CheckedOut;
+    String Borrower;
 
-    protected String Title;
-    protected String ItemID;
-    protected boolean CheckOut;
-    protected String Borrower;
-
-    public abstract void DisplayItemDetails();
-
-    public LibraryItem(String Title, String ItemID){
+    public LibraryItem(String Title, String ItemID) {
         this.Title = Title;
-        this.ItemID =ItemID;
-
-    }
-
-    void checkOut(String borrower){
-
-    };
-    void CheckIn(){
-
-    }
-    String getTitle(){
-
-    }
-    boolean isCheckedOut(){
-
+        this.ItemID = ItemID;
+        this.CheckedOut = false;
+        this.Borrower = null;
     }
 
 
+    public void CheckOut(String borrower){
+        if(!CheckedOut){
+            this.CheckedOut = true;
+            this.Borrower = borrower;
+            System.out.println(Title + " has been checked out by "+ borrower);
+        }else{
+            System.out.println(Title + " is currently checked out.");
+        }
+    }
 
-    //String title
-    //String itemID
-    //boolean CheckOut
-    //String borrower
-    //Abstract void displayItemDetails
+
+    public void CheckIn() {
+        if(CheckedOut){
+            this.CheckedOut = false;
+            this.Borrower = null;
+            System.out.println(Title + " has checked in.");
+        }else{
+            System.out.println(Title + " is currently checked out.");
+        }
+    }
+
+    public String GetTitle() {
+        return Title;
+    }
+
+
+
+    public boolean IsCheckedOut() {
+        return CheckedOut;
+    }
+
+    abstract void displayItemDetails();
 }
